@@ -1,0 +1,396 @@
+
+package frm;
+
+import java.awt.Button;
+import java.awt.Font;
+import java.awt.Frame;
+import java.awt.Label;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class frm5 extends WindowAdapter
+{
+    JFrame f;
+    JTextField t;
+    JButton allclear,backspace,modulus,plus,minus,multiply,divide,equal,nine,eight,seven,six,five,four,three,two,one,zero,point,close;
+    JLabel l,l1;
+    int p;
+    String s,getdata,empty,prevalue,predata,nextdata;
+    Font ff,fb,fb1,ft;
+   
+    frm5()   // calculator
+    {
+        f=new JFrame();
+        f.setSize(720,840);
+        f.setVisible(true);
+        f.setLayout(null);
+        f.addWindowListener(this);
+        
+        ff=new Font("Forte", Font.BOLD, 30);
+        fb=new Font("Comic Sans MS", Font.BOLD, 25);
+        fb1=new Font("Comic Sans MS", Font.BOLD, 15);
+        ft=new Font("Comic Sans MS", Font.PLAIN, 20);
+        
+        t=new JTextField();
+        t.setBounds(200,180,320,160);
+        t.setFont(ft);
+        f.add(t);
+        
+        l=new JLabel();
+        l.setBounds(200,100,320,80);
+        l.setFont(ft);
+        f.add(l);
+        l1=new JLabel("Calculator");
+        l1.setBounds(275,40,200,50);
+        l1.setFont(ff);
+        f.add(l1);
+        
+        allclear=new JButton("AC");
+        allclear.setBounds(200,340,80,80);
+        allclear.setFont(fb1);
+        f.add(allclear);
+        backspace=new JButton("Backspace");
+        backspace.setBounds(280,340,80,80);
+        backspace.setFont(fb1);
+        f.add(backspace);
+        
+        modulus=new JButton("%");
+        modulus.setBounds(360,340,80,80);
+        modulus.setFont(fb);
+        f.add(modulus);
+        divide=new JButton("/");
+        divide.setBounds(440,340,80,80);
+        divide.setFont(fb);
+        f.add(divide);
+        multiply=new JButton("x");
+        multiply.setBounds(440,420,80,80);
+        multiply.setFont(fb);
+        f.add(multiply);
+        minus=new JButton("-");
+        minus.setBounds(440,500,80,80);
+        minus.setFont(fb);
+        f.add(minus);
+        plus=new JButton("+");
+        plus.setBounds(440,580,80,80);
+        plus.setFont(fb);
+        f.add(plus);
+        equal=new JButton("=");
+        equal.setBounds(360,660,80,80);
+        equal.setFont(fb);
+        f.add(equal);
+        
+        close=new JButton("Off");
+        close.setBounds(440, 660, 80, 80);
+        close.setFont(fb);
+        f.add(close);
+        
+        point=new JButton(".");
+        point.setBounds(200, 660, 80, 80);
+        point.setFont(fb);
+        f.add(point);
+        
+        zero=new JButton("0");
+        zero.setBounds(280,660,80,80);
+        zero.setFont(fb);
+        f.add(zero);
+        one=new JButton("1");
+        one.setBounds(200,580,80,80);
+        one.setFont(fb);
+        f.add(one);
+        two=new JButton("2");
+        two.setBounds(280,580,80,80);
+        two.setFont(fb);
+        f.add(two);
+        three=new JButton("3");
+        three.setBounds(360,580,80,80);
+        three.setFont(fb);
+        f.add(three);
+        four=new JButton("4");
+        four.setBounds(200,500,80,80);
+        four.setFont(fb);
+        f.add(four);
+        five=new JButton("5");
+        five.setBounds(280,500,80,80);
+        five.setFont(fb);
+        f.add(five);
+        six=new JButton("6");
+        six.setBounds(360,500,80,80);
+        six.setFont(fb);
+        f.add(six);
+        seven=new JButton("7");
+        seven.setBounds(200,420,80,80);
+        seven.setFont(fb);
+        f.add(seven);
+        eight=new JButton("8");
+        eight.setBounds(280,420,80,80);
+        eight.setFont(fb);
+        f.add(eight);
+        nine=new JButton("9");
+        nine.setBounds(360,420,80,80);
+        nine.setFont(fb);
+        f.add(nine);
+        
+        close.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                f.dispose();
+            }
+        });
+        point.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                s=point.getLabel();
+                getdata=t.getText();
+                t.setText(getdata+s);
+                point.setEnabled(false);  // . print only one time
+            }
+        });
+        zero.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                s=zero.getLabel();
+                getdata=t.getText();
+                t.setText(getdata+s);
+            }
+        });
+        one.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                s=one.getLabel();    
+                getdata=t.getText();
+                
+                t.setText(getdata+s);  // not (s+getdata)
+            }
+        });
+        two.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                s=two.getLabel();
+                getdata=t.getText();
+                t.setText(getdata+s);
+            }
+        });
+        three.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                s=three.getLabel();
+                getdata=t.getText();
+                t.setText(getdata+s);
+            }
+        });
+        four.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                s=four.getLabel();
+                getdata=t.getText();
+                t.setText(getdata+s);
+            }
+        });
+        five.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                s=five.getLabel();
+                getdata=t.getText();
+                t.setText(getdata+s);
+            }
+        });
+        six.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                s=six.getLabel();
+                getdata=t.getText();
+                t.setText(getdata+s);
+            }
+        });
+        seven.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                s=seven.getLabel();
+                getdata=t.getText();
+                t.setText(getdata+s);
+            }
+        });
+        eight.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                s=eight.getLabel();
+                getdata=t.getText();
+                t.setText(getdata+s);
+            }
+        });
+        nine.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                s=nine.getLabel();
+                getdata=t.getText();
+                t.setText(getdata+s);
+            }
+        });
+        
+        equal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                prevalue=l.getText();  // 30+
+                
+                nextdata=t.getText();  // 20
+                s=equal.getLabel();    // =
+                l.setText(prevalue+nextdata+s);   // 30+20=
+                
+                int a,b,c = 0;
+                a=Integer.parseInt(predata);   // 30
+                b=Integer.parseInt(nextdata);  // 20
+                
+                if(p==1)
+                    c=a+b;
+                if(p==2)
+                    c=a-b;
+                if(p==3)
+                    c=a*b;
+                if(p==4)
+                    c=a/b;
+                if(p==5)
+                    c=a%b; // modulus
+                t.setText(""+c);
+                
+            }
+        });
+        plus.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                predata=t.getText();  // 30
+                s=plus.getLabel();    // +  
+                l.setText(predata+s); // 30+
+               
+                empty="";
+                t.setText(empty);
+                
+                p=1;
+                plus.setEnabled(true); // print + only one time
+            }
+        });
+        minus.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                predata=t.getText();  // 30
+                s=minus.getLabel();   // -
+                l.setText(predata+s); // 30-
+
+                empty="";
+                t.setText(empty);
+                
+                p=2;
+                minus.setEnabled(true); // print - only one time
+            }
+        });
+        multiply.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                predata=t.getText();   // 30
+                s=multiply.getLabel(); // *
+                l.setText(predata+s);  // 30*
+                
+                empty="";
+                t.setText(empty);
+            
+                p=3;
+                
+                multiply.setEnabled(true); // print * only one time
+            }
+        });
+        divide.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                predata=t.getText();  // 30
+                s=divide.getLabel();  // /
+                l.setText(predata+s); // 30/
+                
+                empty="";
+                t.setText(empty);
+                
+                p=4;
+                
+                divide.setEnabled(true); // print / only one time
+            }
+        });
+        modulus.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                predata=t.getText();  // 30
+                s=modulus.getLabel(); // %
+                l.setText(predata+s);  // 30%
+                
+                empty="";
+                t.setText(empty);
+                
+                p=5;
+    
+                modulus.setEnabled(true); // print % only one time
+            }
+        });
+        
+        
+        backspace.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                String s=t.getText();
+                try 
+                {
+                    t.setText(s.substring(0, s.length()-1));
+                } 
+                catch (Exception e) {} //the value doesn't be below 0
+            }
+        }
+        );
+        allclear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                empty="";
+                t.setText(empty);
+                l.setText(empty);
+            }
+        });
+        
+    }
+    
+    public static void main(String[] args)
+    {
+        frm5 ff=new frm5();
+    }
+
+    @Override
+    public void windowClosing(WindowEvent we) 
+    {
+        f.dispose();
+    }
+    
+    
+}
+frm5.java
+Displaying frm5.java.
